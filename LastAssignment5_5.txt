@@ -1,0 +1,73 @@
+// Abstract class
+abstract class Animal {
+    // Abstract method
+    public abstract void makeSound();
+
+    // Concrete method
+    public void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+
+// Interface
+interface Vehicle {
+    // Abstract method
+    void start();
+
+    // Abstract method
+    void stop();
+
+    // Default method
+    default void honk() {
+        System.out.println("Vehicle is honking");
+    }
+}
+
+// Concrete class implementing the Animal abstract class
+class Dog extends Animal {
+    // Implementation of abstract method
+    public void makeSound() {
+        System.out.println("Dog is barking");
+    }
+}
+
+// Concrete class implementing the Vehicle interface
+class Car implements Vehicle {
+    // Implementation of abstract methods
+    public void start() {
+        System.out.println("Car started");
+    }
+
+    public void stop() {
+        System.out.println("Car stopped");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects
+        Dog dog = new Dog();
+        Car car = new Car();
+
+        // Invoking methods
+        dog.makeSound();
+        dog.sleep();
+
+        car.start();
+        car.stop();
+        car.honk();
+    }
+}
+//In this example, we have an abstract class Animal and an interface Vehicle. The Animal class has an abstract method makeSound() and a concrete method sleep(). The Vehicle interface has two abstract methods start() and stop, as well as a default method honk().
+
+Key differences between an abstract class and an interface in Java:
+
+Definition: An abstract class is a class that may contain abstract methods and concrete methods. An interface, on the other hand, is a collection of abstract methods and default methods (since Java 8), but cannot contain concrete methods or instance variables.
+Inheritance: A class can extend only one abstract class using the extends keyword, while it can implement multiple interfaces using the implements keyword.
+Constructor: An abstract class can have a constructor, which is invoked when a subclass is instantiated. An interface cannot have a constructor.
+Method implementation: In an abstract class, you can have abstract methods (without implementation) and concrete methods (with implementation). In an interface, all methods are abstract by default, and they are implemented by the classes that implement the interface.
+Multiple inheritance: Since a class can only extend one abstract class, it cannot inherit from multiple abstract classes. However, it can implement multiple interfaces, allowing for multiple inheritance of behavior.
+Default methods: Interfaces can have default methods, which are implemented within the interface itself. Default methods can be overridden in the implementing classes. Abstract classes do not have default methods.
+Variables: An abstract class can have instance variables, constructors, and static methods, while an interface can only have constants (static final variables).
+Access modifiers: Abstract class methods can have any access modifier (public, protected, default, private). Interface methods are implicitly public, and variables are implicitly public, static, and final.
+Purpose: Abstract classes are used when there is a common behavior shared among multiple related classes, and some methods need to be implemented by the subclasses. Interfaces are used to define a contract or set of methods that classes must implement, allowing for polymorphism and loose coupling.
